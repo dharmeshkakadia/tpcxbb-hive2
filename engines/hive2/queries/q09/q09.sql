@@ -42,7 +42,7 @@ CREATE TABLE ${hiveconf:RESULT_TABLE} (
   totalSales DECIMAL(15,0)
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'
-STORED AS ${env:BIG_BENCH_hive_default_fileformat_result_table} LOCATION '${hiveconf:RESULT_DIR}';
+STORED AS ${hiveconf:BIG_BENCH_hive_default_fileformat_result_table} LOCATION '${hiveconf:RESULT_DIR}';
 
 -- the real query part
 INSERT INTO TABLE ${hiveconf:RESULT_TABLE}

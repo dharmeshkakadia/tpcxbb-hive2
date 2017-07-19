@@ -76,9 +76,9 @@ set hive.exec.compress.output=false;
 set hive.exec.compress.output;
 
 -- This query requires parallel order by for fast and deterministic global ordering of final result
-set hive.optimize.sampling.orderby=${hiveconf:bigbench.hive.optimize.sampling.orderby};
-set hive.optimize.sampling.orderby.number=${hiveconf:bigbench.hive.optimize.sampling.orderby.number};
-set hive.optimize.sampling.orderby.percent=${hiveconf:bigbench.hive.optimize.sampling.orderby.percent};
+--set hive.optimize.sampling.orderby=${hiveconf:bigbench.hive.optimize.sampling.orderby};
+--set hive.optimize.sampling.orderby.number=${hiveconf:bigbench.hive.optimize.sampling.orderby.number};
+--set hive.optimize.sampling.orderby.percent=${hiveconf:bigbench.hive.optimize.sampling.orderby.percent};
 --debug print
 set hive.optimize.sampling.orderby;
 set hive.optimize.sampling.orderby.number;
@@ -95,7 +95,7 @@ CREATE TABLE ${hiveconf:RESULT_TABLE} (
   cov_consecutive      decimal(15,5)
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'
-STORED AS ${env:BIG_BENCH_hive_default_fileformat_result_table} LOCATION '${hiveconf:RESULT_DIR}';
+STORED AS ${hiveconf:BIG_BENCH_hive_default_fileformat_result_table} LOCATION '${hiveconf:RESULT_DIR}';
 
 -- Begin: the real query part
 INSERT INTO TABLE ${hiveconf:RESULT_TABLE}
